@@ -82,29 +82,3 @@ let g:NERDTreeDirArrowCollapsible = ' v'
 
 
 
-"
-""""""""""""""""""""""""""""""""""""""""""""'
-"""Paste Mode
-"set noshowmode
-"" Khai báo biến trạng thái
-"let g:paste_mode = 0
-"
-"" Tạo map key trong Normal mode để kích hoạt paste mode
-"nnoremap <silent> <leader>i :call StartPasteMode()<CR>
-"
-"" Hàm bật paste mode và vào Insert
-"function! StartPasteMode()
-"    set paste
-"    let g:paste_mode = 1
-"    startinsert
-"endfunction
-"
-"" Tự động tắt paste mode khi thoát Insert
-"autocmd InsertLeave * if g:paste_mode | call StopPasteMode() | endif
-"
-"" Hàm tắt paste mode
-"function! StopPasteMode()
-"    set nopaste
-"    let g:paste_mode = 0
-"endfunction
-"
