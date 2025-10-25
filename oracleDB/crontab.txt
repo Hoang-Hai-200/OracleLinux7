@@ -1,0 +1,4 @@
+*  * * 1 * /backup/level_0.sh
+* * * 7 * date +%D_%T >> /backup/log_time.log; /backup/level_1.sh >> /backup/log_time.log 
+* * * 1 * /backup/time.sh >> /backup/log_time.log
+* * * 1 * `date +"%T"`      >> /backup/log_time.log
