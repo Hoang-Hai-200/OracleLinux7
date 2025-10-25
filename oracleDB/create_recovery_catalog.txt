@@ -1,0 +1,16 @@
+1. create catalog tablespace in PDB_CAT or Non-CDB: Catalog
+2.In PDB_CAT :
+    create user rcat;
+    grant ...,recovery_catalog_owner to rcat;
+3. Add info PDB_CAT to tnsnames.ora
+4. -- Create catalog in PDB_CAT
+    a. rman rcat/foo@PDB_CAT
+    b. rman >> create catalog;
+
+5. Resgister Database with catalog
+    a. rman target / catalog rcat/foo@PDB_CAT
+    b. rman >> register database
+
+6. Sync controlfile database with catalog
+    a. rman target / catalog rcat/foo@PDB_CAT
+    b. resync catalog

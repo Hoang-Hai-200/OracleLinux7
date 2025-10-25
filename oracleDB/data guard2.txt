@@ -1,0 +1,42 @@
+select process,thread#, active_agents, status from v$managed_standby;
+
+
+ALTER SYSTEM SET LOG_ARCHIVE_CONFIG='DG_CONFIG=(uprimary,ustandby)';
+
+ALTER SYSTEM SET LOG_ARCHIVE_DEST_2='SERVICE=ustandby NOAFFIRM ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=ustandby';
+ALTER SYSTEM SET LOG_ARCHIVE_DEST_STATE_2=ENABLE;
+
+ALTER SYSTEM SET STANDBY_FILE_MANAGEMENT=AUTO; 
+
+
+alter database add standby logfile group 11 ('/u01/app/oracle/oradata/DB1/standbylogfile_11.log') size 200M;
+alter database add standby logfile group 12 ('/u01/app/oracle/oradata/DB1/standbylogfile_12.log') size 200M;
+alter database add standby logfile group 13 ('/u01/app/oracle/oradata/DB1/standbylogfile_13.log') size 200M;
+alter database add standby logfile group 14 ('/u01/app/oracle/oradata/DB1/standbylogfile_14.log') size 200M;
+
+ALTER SYSTEM SET LOG_ARCHIVE_DEST_2='SERVICE=ustandby  VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=ustandby';
+alter system set log_archive_dest_state_2=enable;  
+
+rman TARGET sys/admin@primaryls AUXILIARY sys/admin@standbyls cmdfile=/home/oracle/scripts/duplicate.sql log=/home/oracle/scripts/duplicate.log &
+ 
+
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE DISCONNECT FROM SESSION;
+ 
+------------------------
+create configuration my_dg_config as primary database is uprimary connect identifier is primaryls;
+add database ustandby as connect identifier is standbyls maintained as physical;
+
+add database ‘STANDBY’ as connect identifier is STANDBYTNS;
+
+
+------------------------
+
+SQL> ALTER SYSTEM SET LOG_ARCHIVE_DEST_2='SERVICE=standbyls LGWR ASYNC NOAFFIRM VALID_FOR=(ALL_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=ustandby';
+
+System altered.
+
+STANDBY :
+
+SQL> ALTER SYSTEM SET LOG_ARCHIVE_DEST_2='SERVICE=primaryls LGWR ASYNC NOAFFIRM VALID_FOR=(ALL_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=uprimary';
+
+System altered.

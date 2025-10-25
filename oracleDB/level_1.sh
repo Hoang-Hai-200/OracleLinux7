@@ -1,0 +1,28 @@
+logfile=`date +%Y%m%d_%H:%M:%S`_level_1.log
+#datestart=`date +%Y%m%d_%H:%M:%S`
+export ORACLE_SID=talentcdb
+export ORACLE_BASE=/u01/app/oracle
+export ORACLE_HOME=/u01/app/oracle/product/19.0.0/dbhome_1
+export PATH=$ORACLE_HOME/bin:$PATH
+rman target / nocatalog  log /backup/level_1/$logfile <<EOF
+CONFIGURE CONTROLFILE AUTOBACKUP ON;
+run {
+CROSSCHECK BACKUP;
+DELETE NOPROMT EXPIRED BACKUP;
+DELETE NOPROMT OBSOLETE;
+CROSSCHECK ARCHIVELOG ALL;
+DELETE NOPROMT EXPIRED ARCHIVELOG ALL;
+BACKUP AS COMPRESSED BACKUPSET INCREMENTAL LEVEL 1 CUMULATIVE DATABASE TAG LEVEL1;
+sql 'ALTER SYSTEM ARCHIVE LOG CURRENT';
+BACKUP AS COMPRESSED BACKUPSET ARCHIVELOG ALL  DELETE INPUT TAG ARCH;
+
+}
+
+EOF
+
+
+
+
+
+#datefinish=`date +%Y%m%d_%H:%M:%S`
+#echo "$datestart  $datefinish"
