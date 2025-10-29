@@ -70,8 +70,12 @@
         alias cda='cd  /u01/app/oracle/diag/rdbms/orcl/orcl/trace'
         alias sg='vi /u01/app/oracle/product/19.0.0/dbhome_1/sqlplus/admin/glogin.sql'
         alias rql='rlwrap sqlplus '
+        alias s='sqlplus / as sysdba'
+        alias r='rql / as sysdba'
+        alias rp='rql sys/oracle_4U@orclpdb as sysdba'
 
-7. grid.env
+
+8. grid.env
 
         export ORACLE_SID=+ASM1
         export ORACLE_BASE=/u01/app/grid
