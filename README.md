@@ -19,7 +19,8 @@
         yum install bash-completion.noarch -y
         yum install bash-completion-extras.noarch -y
         yum install python3
-        pip3 install PYGMENTS --user        
+        pip3 install PYGMENTS --user 
+        yum install rlwrap -y
 
 
 
