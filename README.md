@@ -73,7 +73,7 @@
 
 7. grid.env
 
-           export ORACLE_SID=+ASM1
+        export ORACLE_SID=+ASM1
         export ORACLE_BASE=/u01/app/grid
         export ORACLE_HOME=/u01/app/19c/grid
         export ORACLE_INVENTORY=/u01/app/oraInventory
