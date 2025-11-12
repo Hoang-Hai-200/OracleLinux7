@@ -19,3 +19,4 @@ set statusbar on
 set statusbar add txn
 set statusbar add timing
 set statusbar add cwd
+set statusbar add jobs
