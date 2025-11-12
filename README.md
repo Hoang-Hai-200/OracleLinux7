@@ -21,6 +21,7 @@
         yum install python3
         pip3 install PYGMENTS --user 
         yum install rlwrap -y
+        yum install java-11 -y
 
 
 
@@ -51,29 +52,34 @@
 
 6. db.env
    
-        export ORACLE_HOME=/u01/app/oracle/product/19.0.0/dbhome_1
-        export PATH=$PATH:$ORACLE_HOME/bin:$ORACLE_HOME/OPatch
-        export ORACLE_SID=orcl	
+        export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/oracle/.fzf/bin:/home/oracle/.local/bin:/home/oracle/bin
+        export ORACLE_SID=orcl
         export ORACLE_BASE=/u01/app/oracle
+        export ORACLE_HOME=/u01/app/oracle/product/19.0.0/dbhome_1
+   
+        export SQLCL_HOME=$HOME/downloads/sqlcl
+        export PATH=$SQLCL_HOME/bin:$PATH:$ORACLE_HOME/bin:$ORACLE_HOME/OPatch
+        export SQLPATH=$HOME/.sqlcl
+        
+        export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.25.0.9-1.0.1.el7_9.x86_64
         
         export DUMP=$ORACLE_BASE/diag/rdbms/$ORACLE_UNQNAME/$ORACLE_SID/trace
         export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
         export CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
-        export PATH=$ORACLE_HOME/bin:$ORACLE_HOME/OPatch:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/oracle/.local/bin:/home/oracle/bin
+        
         alias alert="tail -300f $DUMP/alert_$ORACLE_SID.log"
         alias e="env | grep ORA"
         alias p='ps -ef|grep smon'
+        alias rql='rlwrap -if ~/scripts/keywords.txt sqlplus '
         alias s='sqlplus / as sysdba'
-        alias r='rman target /'
+        alias r='rql / as sysdba'
+        alias sp='rql sys/oracle_4U@orclpdb as sysdba'
+        #alias r='rman target /'
         
         alias cdo='cd /u01/app/oracle/product/19.0.0/dbhome_1/network/admin'
         alias cda='cd  /u01/app/oracle/diag/rdbms/orcl/orcl/trace'
         alias sg='vi /u01/app/oracle/product/19.0.0/dbhome_1/sqlplus/admin/glogin.sql'
-        alias rql='rlwrap sqlplus '
-        alias s='sqlplus / as sysdba'
-        alias r='rql / as sysdba'
-        alias rp='rql sys/oracle_4U@orclpdb as sysdba'
-
+   
 
 8. grid.env
 
