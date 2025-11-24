@@ -13,12 +13,12 @@
         
         yum install oracle-database-preinstall-19c.x86_64 -y
         
-        yum install git tmux tree vim -y
+        yum install git tmux tree vim file -y
         yum install zip bzip2 wget lsof -y
         yum install the_silver_searcher -y
         yum install bash-completion.noarch -y
         yum install bash-completion-extras.noarch -y
-        yum install python3
+        yum install python3 -y
         pip3 install PYGMENTS --user 
         yum install rlwrap -y
         yum install java-11 -y
