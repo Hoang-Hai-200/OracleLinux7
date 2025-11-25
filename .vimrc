@@ -1,6 +1,4 @@
-if !exists("$USE_VIMRC")
-    finish
-endif
+
 
 set encoding=UTF8
 set mouse=
