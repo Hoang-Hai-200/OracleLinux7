@@ -51,7 +51,8 @@
         mount -t iso9660 -o ro,uid=oracle,gid=oinstall /dev/sr1 /mnt/software
 
 6. db.env
-   
+
+        export USE_VIMRC=enable
         export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/oracle/.fzf/bin:/home/oracle/.local/bin:/home/oracle/bin
         export ORACLE_SID=orcl
         export ORACLE_BASE=/u01/app/oracle
