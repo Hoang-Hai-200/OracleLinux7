@@ -52,7 +52,6 @@
 
 6. db.env
 
-        [ -L ~/.vimrc ] || ln -s ~/.vim/.vimrc ~/.vimrc
         export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/oracle/.fzf/bin:/home/oracle/.local/bin:/home/oracle/bin
         export ORACLE_SID=orcl
         export ORACLE_BASE=/u01/app/oracle
@@ -98,8 +97,5 @@
         alias c='crsctl stat res -t'
         alias lsdg='asmcmd lsdg'
    
-10. .bash_logout 
-
-        [ -L ~/.vimrc  ] && rm -f ~/.vimrc  
 
 
