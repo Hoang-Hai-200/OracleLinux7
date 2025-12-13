@@ -55,7 +55,7 @@
         export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/oracle/.fzf/bin:/home/oracle/.local/bin:/home/oracle/bin
         export ORACLE_SID=orcl
         export ORACLE_BASE=/u01/app/oracle
-        export ORACLE_HOME=/u01/app/oracle/product/19.0.0/dbhome_1
+        export ORACLE_HOME=$ORACLE_BASE/product/19.0.0/dbhome_1
    
         export SQLCL_HOME=$HOME/downloads/sqlcl
         export PATH=$SQLCL_HOME/bin:$PATH:$ORACLE_HOME/bin:$ORACLE_HOME/OPatch
