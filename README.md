@@ -23,7 +23,9 @@
         yum install rlwrap -y
         yum install java-11 -y
 
+# Prompt
 
+        export PS1="\n┌─ \t \u@\h(\[\033[31;1m\]\w\[\033[0m\]) ->\n└─ \`if [ \$? = 0 ]; then echo \\$\[\e[1m\]; else echo \[\e[1\;31m\]\\$\[\e[0m\]; fi\` \[\033[0m\]"
 
 1. [Install RANGER](https://www.linuxuntu.com/install-ranger-linux/)
   * User root
