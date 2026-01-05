@@ -14,7 +14,7 @@
         yum install oracle-database-preinstall-19c.x86_64 -y
         
         yum install git tmux tree vim file -y
-        yum install zip bzip2 wget lsof -y
+        yum install zip unzip bzip2 wget lsof -y
         yum install the_silver_searcher -y
         yum install bash-completion.noarch -y
         yum install bash-completion-extras.noarch -y
