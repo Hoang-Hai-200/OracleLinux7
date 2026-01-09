@@ -21,5 +21,7 @@ alias la='ls -latr'
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
 
+export PS1='\n┌─ \t \[$([ "$EUID" -eq 0 ] && echo "\e[1;31m" || echo "\e[1;32m")\]\u@\h\[\e[0m\](\w) ->\n└─ \[$([ "$EUID" -eq 0 ] && echo "\e[1;31m#\e[0m" || echo "\e[1;32m$\e[0m")\] '
+
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
