@@ -14,18 +14,39 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 
 
 # User specific aliases and functions
-. ~/scripts/db.env
+#. ~/scripts/db.env
 alias vi=vim
 alias la='ls -latr'
-#alias config='/usr/bin/git --git-dir=/home/oracle/.cfg/ --work-tree=/home/oracle'
 
-alias config='/usr/bin/git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
+# Reset
+RESET="\[\e[0m\]"
 
-# 2 line
-export PS1='\n┌─ \t \[$([ "$EUID" -eq 0 ] && echo "\e[1;31m" || echo "\e[1;32m")\]\u@\h\[\e[0m\](\w) ->\n└─ \[$([ "$EUID" -eq 0 ] && echo "\e[1;31m#\e[0m" || echo "\e[1;32m$\e[0m")\] '
+# Regular colors
+BLACK="\[\e[0;30m\]"
+RED="\[\e[0;31m\]"
+GREEN="\[\e[0;32m\]"
+YELLOW="\[\e[0;33m\]"
+BLUE="\[\e[0;34m\]"
+MAGENTA="\[\e[0;35m\]"
+CYAN="\[\e[0;36m\]"
+WHITE="\[\e[0;37m\]"
 
-# 1 line
-#export PS1='\[$([ "$EUID" -eq 0 ] && echo "\e[1;31m#\e[0m" || echo "\e[1;32m$\e[0m")\] \t \[$([ "$EUID" -eq 0 ] && echo "\e[1;31m" || echo "\e[1;32m")\]\u-v8@\h\[\e[0m\](\w) -> '
+# Bold colors
+BOLD_RED="\[\e[1;31m\]"
+BOLD_GREEN="\[\e[1;32m\]"
+BOLD_YELLOW="\[\e[1;33m\]"
+BOLD_BLUE="\[\e[1;34m\]"
 
-#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if [ "$EUID" -eq 0 ]; then
+  USER_COLOR="$BOLD_RED"
+  PROMPT_SYMBOL="${BOLD_RED}#${RESET}"
+else
+  USER_COLOR="$BOLD_GREEN"
+  PROMPT_SYMBOL="${BOLD_GREEN}\$${RESET}"
+fi
+
+
+export PS1="\n┌─ \t ${USER_COLOR}\u@\h${RESET}(\w) ->\n└─ ${PROMPT_SYMBOL} "
+#export PS1="${PROMPT_SYMBOL} \t ${USER_COLOR}\u@\h${RESET}(\w) ${BOLD_GREEN}->${RESET} "
+
 eval "$(fzf --bash)"
