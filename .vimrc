@@ -67,7 +67,22 @@ nnoremap <C-g> :Ag<Cr>
 nnoremap <silent> <C-b> :Buffers<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+ let g:paste_mode = 0
+ 
+ nnoremap <silent> <leader>i :call StartPasteMode()<CR>
+ 
+ function! StartPasteMode()
+     set paste
+     let g:paste_mode = 1
+     startinsert
+ endfunction
+ 
+ autocmd InsertLeave * if g:paste_mode | call StopPasteMode() | endif
+ 
+ function! StopPasteMode()
+     set nopaste
+     let g:paste_mode = 0
+ endfunction
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
