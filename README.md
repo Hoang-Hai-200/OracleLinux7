@@ -78,6 +78,33 @@
         alias cda='cd  /u01/app/oracle/diag/rdbms/orcl/orcl/trace'
         alias sg='vi /u01/app/oracle/product/19.0.0/dbhome_1/sqlplus/admin/glogin.sql'
    
+           ===========================================
+   
+        export ORACLE_HOME=/u01/app/oracle/product/19.0.0/dbhome_1
+        export PATH=$PATH:$ORACLE_HOME/bin:$ORACLE_HOME/OPatch
+        export ORACLE_SID=orcl	
+        export ORACLE_UNQNAME=orcl
+        export ORACLE_BASE=/u01/app/oracle
+        
+        export DUMP=$ORACLE_BASE/diag/rdbms/$ORACLE_UNQNAME/$ORACLE_SID/trace
+        export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
+        export CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+        export PATH=$ORACLE_HOME/bin:$ORACLE_HOME/OPatch:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/oracle/.local/bin:/home/oracle/bin
+        alias alert="tail -300f $DUMP/alert_$ORACLE_SID.log"
+        alias e="env | grep ORA"
+        alias p='ps -ef|grep smon'
+        
+        alias sqlplus='rlwrap -a -i -f ~/scripts/keywords.txt  sqlplus'
+        alias rman='rlwrap -a -if ~/scripts/keywords_rman.txt  rman'
+        alias asmcmd='rlwrap -a asmcmd'
+        
+        alias s='sqlplus / as sysdba'
+        alias pdb='sqlplus sys/Welcome-1@pdb1 as sysdba'
+        alias r='rman target /'
+        
+        alias cdo="cd $ORACLE_HOME/network/admin"
+        alias cda="cd $DUMP"
+
 
 8. grid.env
 
