@@ -1,0 +1,42 @@
+list backup summary failure advise repair preview shutdown immediate abort startup
+ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY keystore open with backup
+delete noprompt obsolete
+alter
+pluggable
+database
+select
+from
+where
+parameter
+show
+system
+session
+container
+list
+all
+archivelog
+backed
+backuppiece
+backupset
+backup
+database
+completed
+controlfilecopy
+copy
+datafilecopy
+db_unique_name
+device
+expired
+failure
+obsolete
+foreign
+global
+guid
+incarnation
+like
+proxy
+preplugin
+recover
+restore
+script
+tag
