@@ -1,0 +1,17 @@
+ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY keystore open with backup
+alter
+pluggable
+database
+select
+from
+where
+parameter
+show
+system
+session
+exit
+shutdown
+abort
+immediate
+startup
+container
