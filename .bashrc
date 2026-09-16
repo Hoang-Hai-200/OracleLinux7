@@ -12,6 +12,15 @@ export TERM=xterm-256color
 export PYGMENTS_STYLE=solarized-dark
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 
+##################################################################################
+function rg() {
+    ranger --cmd="set preview_files true" --choosedir="$HOME/.rangerdir" "$@"
+    local LASTDIR=$(cat "$HOME/.rangerdir" 2>/dev/null)
+    if [ -n "$LASTDIR" ] && [ "$LASTDIR" != "$PWD" ]; then
+        cd "$LASTDIR"
+    fi
+}
+##################################################################################
 
 # User specific aliases and functions
 #. ~/scripts/db.env
