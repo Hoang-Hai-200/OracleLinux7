@@ -39,6 +39,10 @@ BLUE="\[\e[0;34m\]"
 MAGENTA="\[\e[0;35m\]"
 CYAN="\[\e[0;36m\]"
 WHITE="\[\e[0;37m\]"
+ORANGE="\[\e[38;5;208m\]"
+BOLD_ORANGE="\[\e[1;38;5;208m\]"
+ORANGE_RGB="\[\e[38;2;255;165;0m\]"
+
 
 # Bold colors
 BOLD_RED="\[\e[1;31m\]"
@@ -50,7 +54,9 @@ if [ "$EUID" -eq 0 ]; then
   USER_COLOR="$BOLD_RED"
   PROMPT_SYMBOL="${BOLD_RED}#${RESET}"
 else
-  USER_COLOR="$BOLD_GREEN"
+  #USER_COLOR="$BOLD_GREEN"
+  USER_COLOR="$BOLD_ORANGE"
+
   PROMPT_SYMBOL="${BOLD_GREEN}\$${RESET}"
 fi
 
