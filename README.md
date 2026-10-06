@@ -106,7 +106,7 @@
         alias cdo="cd $ORACLE_HOME/network/admin"
         alias cda="cd $DUMP"
 
-        #ln -s /home/oracle/scripts/search_dict.sh ~/bin/sdictest
+        #ln -s /home/oracle/scripts/search_dict.sh ~/bin/sdic
 8. grid.env
 
         export ORACLE_SID=+ASM1
